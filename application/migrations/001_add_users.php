@@ -17,17 +17,17 @@ class Migration_Add_users extends CI_Migration {
                 'type' => 'VARCHAR',
                 'constraint' => '50',
             ),
-            'email' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '50',
-                'null' => TRUE,
-            ),
             'token' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '50'
             ),
             'expire_at' => array(
                 'type' => 'timestamp'
+            ),
+            'status' => array(
+                'type' => 'VARCHAR',
+                'constraint' => '10',
+                'null' => TRUE,
             ),
             'created_at' => array(
                 'type' => 'timestamp'

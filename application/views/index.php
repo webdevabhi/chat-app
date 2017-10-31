@@ -1,9 +1,11 @@
 <html lang="en">
 <head>
-	<title>Codeigniter 3</title>
-	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<title>Chat Room</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 	<link rel="stylesheet" href="<?=base_url()?>assest/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?=base_url()?>assest/css/custom.css">
 </head>
 <body ng-app="main-App">
 	<!-- <nav class="navbar navbar-default">
@@ -36,9 +38,12 @@
 	<script src="<?=base_url()?>assest/js/angular-route.min.js"></script>
 	<!-- MY App -->
 	<script src="app/routes.js"></script>
-	<script src="app/services/myServices.js"></script>
 	<!-- <script src="app/helper/myHelper.js"></script> -->
-	<!-- App Controller -->
+
+	<!-- Controllers -->
 	<script src="app/controllers/AppController.js"></script>
+
+	<!-- Services -->
+	<script src="app/services/ChatServices.js"></script>
 </body>
 </html>

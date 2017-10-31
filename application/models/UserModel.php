@@ -9,8 +9,9 @@ class UserModel extends CI_Model {
 		$expireAt = date("Y-m-d H:i:s", strtotime('+12 hours'));
 		$data['token'] = $token;
 		$data['expire_at'] = $expireAt;
+		$data['status'] = 'ACTIVE';
 		$data['created_at'] = date('Y-m-d H:i:s');
 		$q = $this->db->insert('users', $data);
-		return array('status' => 201,'message' => 'User saved.', 'token' => $token);
+		return array('status' => 201,'message' => 'User saved.', 'expire_at' => $expireAt, 'token' => $token);
 	}
 }

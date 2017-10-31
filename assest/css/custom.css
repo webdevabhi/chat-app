@@ -1,0 +1,14 @@
+.login-wrapper {
+	display: flex;
+    align-items: center;
+    height: 95%;
+}
+
+.form-control {
+	border-radius: 0;
+	border-color: #000000;
+}
+
+.btn {
+	border-radius: 0;
+}

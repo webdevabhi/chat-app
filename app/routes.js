@@ -4,11 +4,11 @@ app.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
         when('/', {
-            templateUrl: 'templates/index.html',
+            templateUrl: 'templates/home.html',
             controller: 'AppController'
         }).
-        when('/items', {
-            templateUrl: 'templates/items.html',
-            controller: 'ItemController'
+        when('/chat-room', {
+            templateUrl: 'templates/chatRoom.html',
+            controller: 'ChatController'
         });
     }]);

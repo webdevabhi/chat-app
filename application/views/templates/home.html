@@ -1,0 +1,21 @@
+<form role="form" name="registration" ng-submit="doRegistration(registration)" novalidate>
+	<div class="login-wrapper">
+		<div class="col-sm-6 col-md-6" style="margin: auto;border: 1px solid #000000;padding: 50px;">
+			<div class="form-group row">
+				<label class="label-control col-sm-3 col-md-3">User Name <span class="text-danger">*</span></label>
+				<div class="col-sm-9 col-md-9">
+					<input type="text" class="form-control" name="userName" ng-model="userName" required>
+				</div>
+				<!-- <div class="col-sm-6 col-md-6">
+					<label class="label-control">Email</label>
+					<input type="email" class="form-control" ng-model="user.email" name="email">
+				</div> -->
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-12 col-md-12">
+					<button class="btn btn-primary pull-right" type="submit" ng-disabled="registration.$invalid">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

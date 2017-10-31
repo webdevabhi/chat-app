@@ -22,7 +22,8 @@ class Api extends CI_Controller {
 				$response = array('status' => 400,'message' =>  'Name can\'t be empty');
 			} else {
 				$respStatus = 200;
-				$response = $this->UserModel->store($_REQUEST);
+				$param = [ 'name' => $_REQUEST['name'] ];
+				$response = $this->UserModel->store($param);
 			}
 			json_output($respStatus,$response);
 		}
