@@ -8,7 +8,7 @@ app.config(['$routeProvider',
             controller: 'AppController'
         }).
         when('/chat-rooms', {
-            templateUrl: 'templates/chatRoom.html',
+            templateUrl: 'templates/chat-room.html',
             controller: 'ChatController'
         });
     }]);

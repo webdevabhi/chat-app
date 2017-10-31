@@ -34,6 +34,8 @@ class Api extends CI_Controller {
 
 	public function getUsers()
 	{
-		// print_r($_SESSION);
+		$a = "Hello";
+
+		print_r($a());
 	}
 }

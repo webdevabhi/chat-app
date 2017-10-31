@@ -35,14 +35,14 @@
 	<script src="<?=base_url()?>assest/js/angular.min.js"></script>  
 	<script src="<?=base_url()?>assest/js/angular-route.min.js"></script>
 	<!-- MY App -->
-	<script src="app/routes.js"></script>
-	<!-- <script src="app/helper/myHelper.js"></script> -->
+	<script src="<?=base_url()?>client-app/routes.js"></script>
+	<!-- <script src="client-app/helper/myHelper.js"></script> -->
 
 	<!-- Controllers -->
-	<script src="app/controllers/AppController.js"></script>
-	<script src="app/controllers/ChatController.js"></script>
+	<script src="<?=base_url()?>client-app/controllers/AppController.js"></script>
+	<script src="<?=base_url()?>client-app/controllers/ChatController.js"></script>
 
 	<!-- Services -->
-	<script src="app/services/ChatServices.js"></script>
+	<script src="<?=base_url()?>client-app/services/ChatServices.js"></script>
 </body>
 </html>
