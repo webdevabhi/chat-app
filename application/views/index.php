@@ -27,9 +27,7 @@
 			</div>
 		</div>
 	</nav> -->
-	<div class="container">
-		<ng-view></ng-view>
-	</div>
+	<ng-view></ng-view>
 
 	<script src="<?=base_url()?>assest/js/jquery.min.js"></script>
 	<script src="<?=base_url()?>assest/js/bootstrap.min.js"></script>
@@ -42,6 +40,7 @@
 
 	<!-- Controllers -->
 	<script src="app/controllers/AppController.js"></script>
+	<script src="app/controllers/ChatController.js"></script>
 
 	<!-- Services -->
 	<script src="app/services/ChatServices.js"></script>

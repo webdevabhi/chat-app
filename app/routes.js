@@ -7,7 +7,7 @@ app.config(['$routeProvider',
             templateUrl: 'templates/home.html',
             controller: 'AppController'
         }).
-        when('/chat-room', {
+        when('/chat-rooms', {
             templateUrl: 'templates/chatRoom.html',
             controller: 'ChatController'
         });

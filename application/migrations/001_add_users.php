@@ -24,11 +24,6 @@ class Migration_Add_users extends CI_Migration {
             'expire_at' => array(
                 'type' => 'timestamp'
             ),
-            'status' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '10',
-                'null' => TRUE,
-            ),
             'created_at' => array(
                 'type' => 'timestamp'
             ),
