@@ -6,11 +6,20 @@ class UserModel extends CI_Model {
 	public function store($data)
 	{
 		$token = crypt(substr( md5(rand()), 0, 7), 'st');
-		$expireAt = date("Y-m-d H:i:s", strtotime('+12 hours'));
 		$data['token'] = $token;
-		$data['expire_at'] = $expireAt;
+		$data['status'] = 'ACTIVE';
 		$data['created_at'] = date('Y-m-d H:i:s');
-		$q = $this->db->insert('users', $data);
-		return array('status' => 201,'message' => 'User saved.', 'expire_at' => $expireAt, 'token' => $token);
+		$user = $this->db->insert('users', $data);
+
+		return array('status' => 201,'message' => 'User saved.', 'token' => $token, 'userName' => $data['name']);
+	}
+
+	public function activeUsers()
+	{
+		$this->db->select("*");
+		$this->db->from("users");
+		$this->db->where('status','ACTIVE');
+		$query = $this->db->get();
+		return $query->result_array();
 	}
 }

@@ -29,6 +29,15 @@
 	</nav> -->
 	<ng-view></ng-view>
 
+	<script type="text/javascript">
+  		var BASE_URL = "<?php echo base_url(); ?>";
+  		var Broadcast = {
+  			POST : "<?php echo POST; ?>",
+  			BROADCAST_URL : "<?php echo BROADCAST_URL; ?>",
+  			BROADCAST_PORT : "<?php echo BROADCAST_PORT; ?>",
+  		};
+  	</script>
+
 	<script src="<?=base_url()?>assest/js/jquery.min.js"></script>
 	<script src="<?=base_url()?>assest/js/bootstrap.min.js"></script>
 	<!-- Angular JS -->

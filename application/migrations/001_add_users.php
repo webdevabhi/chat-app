@@ -15,14 +15,15 @@ class Migration_Add_users extends CI_Migration {
             ),
             'name' => array(
                 'type' => 'VARCHAR',
-                'constraint' => '50',
+                'constraint' => 50,
             ),
             'token' => array(
                 'type' => 'VARCHAR',
-                'constraint' => '50'
+                'constraint' => 50
             ),
-            'expire_at' => array(
-                'type' => 'timestamp'
+            'status' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 10
             ),
             'created_at' => array(
                 'type' => 'timestamp'

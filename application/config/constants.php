@@ -83,3 +83,21 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+/**
+ * -------------------------------------------------------------------------------------
+ * User Defined Constants
+ * -------------------------------------------------------------------------------------
+ * This section contain user defined constants which can be used anywhere
+ * of this system.
+ * 
+ * Every constant name must be in CAPS
+ * Word separation by underscore only : WORD_SEPARATION
+ * 
+ */
+define('DEF_CONST', 				0);
+define('ASSETS',                  	'assets/');
+/** WEBSOCKETS BROADCAST TYPES **/
+define("POST",					"post");
+define("BROADCAST_URL",			"localhost");
+define("BROADCAST_PORT",		"9000");

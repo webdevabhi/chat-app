@@ -32,10 +32,14 @@ class Api extends CI_Controller {
 		}
 	}
 
-	public function getUsers()
+	public function getActiveUsers()
 	{
-		$a = "Hello";
-
-		print_r($a());
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ($method != 'GET') {
+			json_output(400,array('status' => 400,'message' => 'Bad request.'));
+		} else {
+			$response = $this->UserModel->activeUsers();
+			json_output(200, $response);
+		}
 	}
 }
