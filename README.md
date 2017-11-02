@@ -1,4 +1,4 @@
-# chat-app
+# Real Time Chat Application
 Real time chat-app using Angular.js, Codeigniter &amp; Ratchet
 
 
