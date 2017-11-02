@@ -53,4 +53,12 @@
 	    width: 100%;
 	    border-bottom: 1px solid #000000;
 	}
+
+	.msg-pannel {
+		position: absolute;
+	    right: 0;
+	    height: 100%;
+	    top: 0;
+	    width: 75%;
+	}
 }

@@ -8,10 +8,6 @@
 						<div class="col-sm-9 col-md-9">
 							<input type="text" class="form-control" name="userName" ng-model="userName" required>
 						</div>
-						<!-- <div class="col-sm-6 col-md-6">
-							<label class="label-control">Email</label>
-							<input type="email" class="form-control" ng-model="user.email" name="email">
-						</div> -->
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-12 col-md-12">
@@ -38,13 +34,36 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="javascript:void(0)">Client</a></li>
+					<li ng-repeat="user in activeUsers" ng-if="user.token != token" class="user.conn_id" ng-class="{'active' : user.conn_id == isActiveChat }"><a href="javascript:void(0)" ng-click="subscribe(user.conn_id)">{{ user.name }} - {{ user.conn_id }}</a></li>
 				</ul>
 
-				<ul class="nav navbar-nav" style="position: absolute;bottom: 0;width: 100%;left: 0;">
+				<!-- <ul class="nav navbar-nav" style="position: absolute;bottom: 0;width: 100%;left: 0;">
 					<li style="border-bottom: 0;"><a href="javascript:void(0)" style="border: 1px solid #000000;" ng-click="logout()">Logout</a></li>
-				</ul>
+				</ul> -->
 			</div>
 		</div>
 	</nav>
+
+	<section ng-show="isStartedChat" class="msg-pannel" style="position: absolute;right: 0;height: 100%;top: 0;width: 75%;">
+		<div class="container">
+			<div class="row" style="position: fixed;bottom: 10px;right: 0;width: 75%;">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<div class="col-sm-11 col-md-11">
+							<input type="text" name="msg" class="form-control" ng-model="msg">
+						</div>
+						<div class="col-sm-1 col-md-1">
+							<button class="btn btn-primary" type="submit" ng-click="sendMessage(msg)">go</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12" style="padding: 25px 0;">
+					<ul id="message-list" style="list-style: circle;"></ul>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>

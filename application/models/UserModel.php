@@ -7,7 +7,6 @@ class UserModel extends CI_Model {
 	{
 		$token = crypt(substr( md5(rand()), 0, 7), 'st');
 		$data['token'] = $token;
-		$data['status'] = 'ACTIVE';
 		$data['created_at'] = date('Y-m-d H:i:s');
 		$user = $this->db->insert('users', $data);
 
@@ -17,8 +16,7 @@ class UserModel extends CI_Model {
 	public function activeUsers()
 	{
 		$this->db->select("*");
-		$this->db->from("users");
-		$this->db->where('status','ACTIVE');
+		$this->db->from("active_connections")->join('users', 'active_connections.user_id = users.id');;
 		$query = $this->db->get();
 		return $query->result_array();
 	}

@@ -12,7 +12,9 @@
 	},
 	"require": {
 		"php": ">=5.3.7",
-		"cboden/ratchet": "^0.4.0"
+		"cboden/ratchet": "^0.4.0",
+		"illuminate/database": "^5.5",
+		"illuminate/events": "^5.5"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
@@ -24,6 +26,9 @@
 	"autoload": {
 		"psr-4" : {
 			"ChatApp\\": "Ratchet"
-		}
+		},
+		"files": [
+			"Ratchet/setup_eloquent.php"
+		]
 	}
 }

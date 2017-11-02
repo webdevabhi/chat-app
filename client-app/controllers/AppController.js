@@ -1,31 +1,41 @@
-app.controller('AppController', function($scope,$http, ChatService, $location){
+app.controller('AppController', function($scope,$http, ChatService, $location, $rootScope){
 
 	$scope.isOnline = false;
+	$scope.isStartedChat = false;
 	$scope.user = '';
-	
+	$scope.token = '';
+	$scope.activeUsers = [];
+
+	$scope.getActiveUsers = function() {
+		ChatService.getActiveUsers().then(activeUsers => {
+			$scope.activeUsers = activeUsers.data;
+		}, error=> {
+			console.log(error);
+		});
+	}
+
+	window.setInterval(function(){
+		$scope.getActiveUsers();
+	}, 10000);
 
 	$scope.doRegistration = function(form) {
 		if (form.$valid) {
-			console.log($scope.userName);
 			ChatService.login($scope.userName).then(userData => {
-
 				if (userData.data.status == 201) {
 					$scope.isOnline = true;
 					$scope.user = userData.data.userName;
+					$scope.token = userData.data.token;
+					$scope.getActiveUsers();
 
-					$scope.conn = new WebSocket("ws://" + Broadcast.BROADCAST_URL + ":" + Broadcast.BROADCAST_PORT);
+					$rootScope.conn = new WebSocket("ws://" + Broadcast.BROADCAST_URL + ":" + Broadcast.BROADCAST_PORT);
 
-					
-
-					console.log($scope.conn);
-
-					$scope.conn.onopen = function(e) {
+					$rootScope.conn.onopen = function(e) {
 						console.log("Connection established");
-						$scope.conn.send("msg test from a browser client");
 					}
 
-					$scope.conn.onmessage = function(e) {
-						console.log(e.data);
+					$rootScope.conn.onmessage = function(e) {
+						var messageList = angular.element( document.querySelector( '#message-list' ) );
+						messageList.prepend('<li style="text-align: left;padding: 15px;width: 100%;border-bottom: 1px solid #000000;">'+e.data+'</li>');
 					}
 				}
 			}, error => {
@@ -34,57 +44,22 @@ app.controller('AppController', function($scope,$http, ChatService, $location){
 		}
 	}
 
+	$scope.subscribe = function(channel) {
+		$scope.isStartedChat = true;
+		$scope.isActiveChat = channel;
+
+		angular.forEach(angular.element('#message-list'),function(value,key){
+			var data = angular.element(value);
+			data.remove();
+		});
+
+	    $rootScope.conn.send(JSON.stringify({command: "subscribe", channel: channel}));
+	}
+
+	$scope.sendMessage = function(msg) {
+		var messageList = angular.element( document.querySelector( '#message-list' ) );
+		messageList.prepend('<li style="text-align: right;padding: 10px;width: 100%;border-bottom: 1px solid #000000;">'+msg+'</li>');
+	    $rootScope.conn.send(JSON.stringify({command: "message", message: msg}));
+	}
+
 });
-
-
-
-
-// app.controller('AppController', function($scope,$http, ChatService, $location){
-
-// 	$scope.isOnline = false;
-// 	$scope.user = '';
-// 	$scope.usersToken = '';
-// 	$scope.activeUsers = [];
-
-// 	$scope.getActiveUsers = function() {
-// 		ChatService.getActiveUsers().then(activeUsers => {
-// 			$scope.activeUsers = activeUsers.data;
-// 		}, error=> {
-// 			console.log(error);
-// 		});
-// 	}
-
-// 	if (sessionStorage.getItem('token')) {
-// 		$scope.isOnline = true;
-// 		$scope.user = sessionStorage.getItem('userName');
-// 		$scope.getActiveUsers();
-// 	}
-	
-// 	window.setInterval(function(){
-// 		$scope.getActiveUsers();
-// 	}, 10000);
-
-// 	$scope.doRegistration = function(form) {
-// 		if (form.$valid) {
-// 			console.log($scope.userName);
-// 			ChatService.login($scope.userName).then(userData => {
-
-// 				if (userData.data.status == 201) {
-// 					$scope.isOnline = true;
-// 					$scope.user = userData.data.userName;
-// 					$scope.usersToken = userData.data.userName;
-// 					sessionStorage.setItem('token', userData.data.token);
-// 					sessionStorage.setItem('userName', userData.data.userName);
-// 					$scope.getActiveUsers();
-// 				}
-// 			}, error => {
-// 				console.log(error);
-// 			});
-// 		}
-// 	}
-
-// 	$scope.startChat = function(token) {
-// 		console.log(token);
-// 	}
-
-// });
