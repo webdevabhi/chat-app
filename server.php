@@ -1,5 +1,7 @@
 <?php
 
+// Start a Ratchet Server.
+
 require ("vendor/autoload.php");
 
 use Ratchet \Server\IoServer;

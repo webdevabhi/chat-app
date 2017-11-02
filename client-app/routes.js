@@ -6,9 +6,5 @@ app.config(['$routeProvider',
         when('/', {
             templateUrl: 'templates/home.html',
             controller: 'AppController'
-        }).
-        when('/chat-rooms', {
-            templateUrl: 'templates/chat-rooms.html',
-            controller: 'ChatController'
         })
     }]);

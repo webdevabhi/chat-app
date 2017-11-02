@@ -34,6 +34,10 @@ app.controller('AppController', function($scope,$http, ChatService, $location, $
 					}
 
 					$rootScope.conn.onmessage = function(e) {
+						console.log(e); // Checking the msg received by that particular user only.
+						// Unable to list messages in the selected users chat box.
+						// I Tried alot but unable to achive a private chat room in websocket.
+						
 						var messageList = angular.element( document.querySelector( '#message-list' ) );
 						messageList.prepend('<li style="text-align: left;padding: 15px;width: 100%;border-bottom: 1px solid #000000;">'+e.data+'</li>');
 					}
@@ -44,22 +48,20 @@ app.controller('AppController', function($scope,$http, ChatService, $location, $
 		}
 	}
 
+	//Subscribe to a particular User.
 	$scope.subscribe = function(channel) {
 		$scope.isStartedChat = true;
 		$scope.isActiveChat = channel;
 
-		angular.forEach(angular.element('#message-list'),function(value,key){
-			var data = angular.element(value);
-			data.remove();
-		});
-
 	    $rootScope.conn.send(JSON.stringify({command: "subscribe", channel: channel}));
 	}
 
+	// Send Msg to the Particular User.
 	$scope.sendMessage = function(msg) {
 		var messageList = angular.element( document.querySelector( '#message-list' ) );
-		messageList.prepend('<li style="text-align: right;padding: 10px;width: 100%;border-bottom: 1px solid #000000;">'+msg+'</li>');
-	    $rootScope.conn.send(JSON.stringify({command: "message", message: msg}));
+		messageList.prepend('<li style="text-align: right;padding: 10px;width: 100%;border-bottom: 1px solid #000000;">'+$scope.msg+'</li>');
+	    $rootScope.conn.send(JSON.stringify({command: "message", message: $scope.msg}));
+	    $scope.msg = '';
 	}
 
 });

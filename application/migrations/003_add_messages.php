@@ -37,11 +37,11 @@ class Migration_Add_messages extends CI_Migration {
             )
         ));
         $this->dbforge->add_key('id', TRUE);
-        $this->dbforge->create_table('active_chat_message');
+        $this->dbforge->create_table('active_chat_messages');
     }
 
     public function down()
     {
-        $this->dbforge->drop_table('active_chat_message');
+        $this->dbforge->drop_table('active_chat_messages');
     }
 }

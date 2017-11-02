@@ -9,6 +9,7 @@ class Migrate extends CI_Controller {
         $this->load->helper('url');
     }
 
+    // Migrate The DB.
 	public function index()
 	{
 		$this->load->library('migration');

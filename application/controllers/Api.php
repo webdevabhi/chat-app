@@ -8,7 +8,6 @@ class Api extends CI_Controller {
         parent::__construct();
         $this->load->helper('Json_output');
         $this->load->model('UserModel');
-        // $this->load->library('session');
     }
 
     // Save user
@@ -25,13 +24,12 @@ class Api extends CI_Controller {
 				$respStatus = 200;
 				$param = [ 'name' => $_REQUEST['name'] ];
 				$response = $this->UserModel->store($param);
-
-				// $this->session->set_userdata($response);
 			}
 			json_output($respStatus,$response);
 		}
 	}
 
+	//Get All Active Users
 	public function getActiveUsers()
 	{
 		$method = $_SERVER['REQUEST_METHOD'];

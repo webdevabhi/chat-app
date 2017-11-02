@@ -34,13 +34,7 @@ class Chat implements MessageComponentInterface
 	}
 
 	public function onMessage(ConnectionInterface $from, $msg)
-	{
-		// echo $msg."\n";
-		/*foreach ($this->clients as $client) {
-			if ($client !== $from) {
-				$client->send($msg);
-			}
-		}*/
+	{		
 		$data = json_decode($msg);
         switch ($data->command) {
             case "subscribe":
@@ -48,6 +42,7 @@ class Chat implements MessageComponentInterface
                 $this->subscriptions[$data->channel] = $from->resourceId;
                 break;
             case "message":
+
                 if ($this->subscriptions[$from->resourceId]) {
                     $target = $this->subscriptions[$from->resourceId];
 
