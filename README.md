@@ -1,5 +1,5 @@
 # chat-app
-Real time chat-app using Angular.js &amp; Codeigniter
+Real time chat-app using Angular.js, Codeigniter &amp; Ratchet
 
 
 ### How to use :
