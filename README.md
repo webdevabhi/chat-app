@@ -7,7 +7,7 @@ Real time chat-app using Angular.js, Codeigniter &amp; Ratchet
 1) Download the code or get a clone.
 if (cloning please run the command) 
 ```sh
-	compose install
+	composer install
 ```
 
 2) Setup the databse named "chat_app_db" and set your usernamme and password in
