@@ -24,7 +24,7 @@ Change the constant BROADCAST_URL and set it as your host.
 5). Open Command Prompt Move towards your webroot folder. We are having our websocket code at following path in our project.
 ```sh
 	server.php
-	```
+```
 
 We have to run that server.php file from command prompt.
 
@@ -32,7 +32,7 @@ Just move to that folder by using "cd" command, and run the command
 
 ```sh
 	php server.php
-	```
+```
 
 6) Now open a url to migrate the databse.
 URL : <http://localhost/chat-app/migrate>
